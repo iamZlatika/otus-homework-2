@@ -20,6 +20,7 @@ module.exports = {
   plugins: ["@typescript-eslint", "jest"],
   rules: {
     "max-len": ["error", { code: 120 }],
+    "react/prop-types": "off",
   },
   overrides: [
     {

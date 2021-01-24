@@ -1,7 +1,13 @@
-import React from "react";
+import React, { ReactElement } from "react";
+import Cell from "../src/components/Cell/Cell";
 
-const App:React.FC<any> = () => {
-  return <div>Hello</div>;
+const App = (): ReactElement => {
+  return (
+    <>
+      <Cell filled />
+      <Cell />
+    </>
+  );
 };
 
 export default App;
