@@ -2,6 +2,7 @@
     "compilerOptions": {
       "jsx": "preserve",
       "module": "system",
+      "moduleResolution": "node",
       "sourceMap": true
     },
     "include": ["src/**/*"],
