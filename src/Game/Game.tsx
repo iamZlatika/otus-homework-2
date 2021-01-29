@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import Field from "../components/Field/Field";
 
 export const createEmptyField = (height: number, width: number): boolean[][] => {
-  const field = [];
-  for (let i = 0; i < height; i++) {
-    field.push(new Array(width).fill(false));
-  }
-  return field;
+  return Array.from({ length: height }, () => new Array(width).fill(false));
 };
 
 interface Props {
@@ -17,7 +13,7 @@ const Game: React.FC<Props> = ({ height, width }) => {
   const [field, setField] = useState(createEmptyField(height, width));
 
   const toggle = (x: number, y: number) => {
-    const newField = [...field];
+    const newField = field.map((row) => [...row]);
     newField[y][x] = !field[y][x];
     setField(newField);
   };

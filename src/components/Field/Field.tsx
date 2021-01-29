@@ -8,28 +8,26 @@ interface Props {
 }
 
 const Field: React.FC<Props> = ({ field, onClick }) => {
-  const rows = [];
-  for (let y = 0; y < field.length; y++) {
-    const row = [];
-    for (let x = 0; x < field[y].length; x++) {
-      row.push(
-        <Cell
-          filled={field[y][x]}
-          key={`${x},${y}`}
-          onClick={() => {
-            onClick(x, y);
-          }}
-        />
-      );
-    }
-    rows.push(
-      <div key={`${y}`} className="row">
-        {row}
-      </div>
-    );
-  }
+  const cellRow = (row, y) =>
+    row.map((filled, x) => (
+      <Cell
+        filled={filled}
+        key={`${x},${y}`}
+        onClick={() => {
+          onClick(x, y);
+        }}
+      />
+    ));
 
-  return <div className="field">{rows}</div>;
+  return (
+    <div className="field">
+      {field.map((row, y) => (
+        <div key={`${y}`} className="row">
+          {cellRow(row, y)}
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default Field;

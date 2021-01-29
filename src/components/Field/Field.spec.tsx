@@ -4,24 +4,21 @@ import { mount, shallow } from "enzyme";
 
 describe("Field", () => {
   it("Should render field", () => {
-    const handler = jest.fn();
-    expect(shallow(<Field field={[[]]} onClick={handler} />)).not.toBeNull();
+    expect(shallow(<Field field={[[]]} onClick={undefined} />)).not.toBeNull();
   });
   it("Should contain cells", () => {
-    const handler = jest.fn();
-    const field = mount(<Field field={[[true]]} onClick={handler} />);
+    const field = mount(<Field field={[[true]]} onClick={undefined} />);
     const cells = field.findWhere((el) => el.hasClass("cell"));
     expect(cells.length).toBe(1);
   });
   it("Should contain number of cells according to field size", () => {
-    const handler = jest.fn();
     const field = mount(
       <Field
         field={[
           [false, false],
           [true, true],
         ]}
-        onClick={handler}
+        onClick={undefined}
       />
     );
     const cells = field.findWhere((el) => el.hasClass("cell"));
