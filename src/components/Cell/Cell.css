@@ -1,0 +1,21 @@
+.cell {
+  height: 40px;
+  width: 40px;
+  border: 2px solid black;
+  margin: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+.empty {
+  background: white;
+}
+.empty:hover {
+  opacity: 0.6;
+  background: black;
+}
+.filled {
+  background: black;
+}
+.filled:hover {
+  opacity: 0.2;
+}
