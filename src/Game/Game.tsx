@@ -13,7 +13,7 @@ const Game: React.FC<Props> = ({ height, width }) => {
   const [field, setField] = useState(createEmptyField(height, width));
 
   const toggle = (x: number, y: number) => {
-    const newField = field.map((row) => [...row]);
+    const newField = field.map((row, i) => (i === y ? [...row] : row));
     newField[y][x] = !field[y][x];
     setField(newField);
   };

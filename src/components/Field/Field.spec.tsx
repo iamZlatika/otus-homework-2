@@ -3,11 +3,15 @@ import Field from "./Field";
 import { mount, shallow } from "enzyme";
 
 describe("Field", () => {
+  let handler;
+  beforeEach(() => {
+    handler = jest.fn();
+  });
   it("Should render field", () => {
-    expect(shallow(<Field field={[[]]} onClick={undefined} />)).not.toBeNull();
+    expect(shallow(<Field field={[[]]} onClick={handler} />)).not.toBeNull();
   });
   it("Should contain cells", () => {
-    const field = mount(<Field field={[[true]]} onClick={undefined} />);
+    const field = mount(<Field field={[[true]]} onClick={handler} />);
     const cells = field.findWhere((el) => el.hasClass("cell"));
     expect(cells.length).toBe(1);
   });
@@ -18,14 +22,13 @@ describe("Field", () => {
           [false, false],
           [true, true],
         ]}
-        onClick={undefined}
+        onClick={handler}
       />
     );
     const cells = field.findWhere((el) => el.hasClass("cell"));
     expect(cells.length).toBe(4);
   });
   it("Should call on click handler", () => {
-    const handler = jest.fn();
     const field = mount(
       <Field
         field={[
